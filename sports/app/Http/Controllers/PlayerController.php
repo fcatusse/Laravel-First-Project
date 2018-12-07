@@ -68,7 +68,10 @@ class PlayerController extends Controller
      */
     public function edit($id)
     {
-        //
+        $player = Player::find($id);
+        $teams = Team::all();
+
+        return view('player/edit', compact('player'), compact('teams'));
     }
 
     /**
@@ -80,7 +83,9 @@ class PlayerController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        //Player::update(request()->find($id));
+        Player::whereId($id)->update($request->except(['_token']));
+        return redirect('/player');
     }
 
     /**
