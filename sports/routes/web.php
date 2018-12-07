@@ -50,7 +50,7 @@ Route::get('/player/{player}', 'PlayerController@show');
 
 Route::post('/player', 'PlayerController@store');
 
-Route::delete('player/destroy/{player}', 'PlayerController@destroy');
+Route::get('player/delete/{player}', 'PlayerController@destroy');
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/teams', 'TeamController@index')->name('teams');
