@@ -31,7 +31,7 @@ Route::group(['prefix' => 'admin'], function () {
 	Route::post('teams/edit/{id}', 'TeamController@edit');
 	Route::get('teams/edit/{id}', 'TeamController@editForm');
 });
-
+// ---------------- Routes for matches ----------------------//
 Route::get('/match', 'MatchController@index')->name('match');
 
 Route::get('/match/create', 'MatchController@create');
@@ -40,13 +40,18 @@ Route::get('/match/{match}', 'MatchController@show');
 
 Route::post('/match', 'MatchController@store');
 
-Route::get('/match', 'MatchController@index')->name('match');
+//----------------- Routes for players ---------------------//
 
-Route::get('/match/create', 'MatchController@create');
+Route::get('/player', 'PlayerController@index')->name('player');
 
-Route::get('/match/{match}', 'MatchController@show');
+Route::get('/player/create', 'PlayerController@create');
 
-Route::post('/match', 'MatchController@store');
+Route::get('/player/{player}', 'PlayerController@show');
+
+Route::post('/player', 'PlayerController@store');
+
+Route::delete('player/destroy/{player}', 'PlayerController@destroy');
+
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/teams', 'TeamController@index')->name('teams');
 //->middleware('auth');
