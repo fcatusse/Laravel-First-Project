@@ -18,7 +18,7 @@
         @csrf
         <div class="form-group">
             <label>{{ __('Name') }}</label><br>
-            <input class="form-control" type="text" name="name" placeholder="Enter team name">
+            <input class="form-control" type="text" name="name" placeholder="{{ __('Enter team name') }}">
         </div>
         <div class="form-group">
             <label>{{ __('Country') }}</label><br>

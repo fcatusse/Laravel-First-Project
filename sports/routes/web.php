@@ -19,17 +19,19 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/teams', 'TeamController@index')->name('teams');
+// Team route
+
+Route::get('/team', 'TeamController@index')->name('teams');
+Route::get('/team/stats/{id}', 'TeamController@stats');
 
 Route::group(['prefix' => 'admin'], function () {
-	Route::get('teams', 'TeamController@admin');
-	Route::get('teams/delete/{id}', 'TeamController@delete');
-
-	Route::post('teams/add/', 'TeamController@add');
-	Route::get('teams/add/', 'TeamController@addForm');
-
-	Route::post('teams/edit/{id}', 'TeamController@edit');
-	Route::get('teams/edit/{id}', 'TeamController@editForm');
+	Route::get('team', 'TeamController@index');
+	Route::get('team/create/', 'TeamController@create');
+	Route::post('team/create/', 'TeamController@store');
+	Route::get('team/show/{id}', 'TeamController@show');
+	Route::get('team/edit/{id}', 'TeamController@edit');
+	Route::post('team/edit/{id}', 'TeamController@update');
+	Route::get('team/destroy/{id}', 'TeamController@destroy');
 });
 // ---------------- Routes for matches ----------------------//
 Route::get('/match', 'MatchController@index')->name('match');
@@ -53,5 +55,4 @@ Route::post('/player', 'PlayerController@store');
 Route::get('player/delete/{player}', 'PlayerController@destroy');
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/teams', 'TeamController@index')->name('teams');
 //->middleware('auth');

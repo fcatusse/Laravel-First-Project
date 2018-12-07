@@ -4,39 +4,41 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Team;
+use App\Player;
 use App\Data;
 
 class TeamController extends Controller
 {
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function index()
     {
         $teams = Team::all();
-        return view('team', compact('teams'));
+        return view('admin/team/index', compact('teams'));
     }
 
-    public function admin()
-    {
-        $teams = Team::all();
-        return view('admin/team', compact('teams'));
-    }
-
-    public function delete($id)
-    {
-        $team = Team::find($id);
-        $team->delete();
-        $teams = Team::all();
-        return view('admin/team', compact('teams'));
-    }
-
-    public function addForm()
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create(Request $request)
     {
         $data_countries = Data::getCountries();
-        return view('admin/team_addForm', compact('data_countries'));
+        return view('admin/team/create', compact('data_countries'));
     }
 
-    public function add(Request $request)
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
     {
-
         $request->validate([
             'name' => 'required|max:255',
             'country' => 'required',
@@ -49,17 +51,41 @@ class TeamController extends Controller
         Team::create(request()->all());
         $teams = new Team();
         $teams = Team::all();
-        return view('admin/team', compact('teams'));
+        return view('admin/team/index', compact('teams'));
     }
 
-    public function editForm($id)
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+       //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
     {
         $team = Team::find($id);
         $data_countries = Data::getCountries();
-        return view('admin/team_editForm', compact('team','data_countries'));
+        return view('admin/team/edit', compact('team','data_countries'));
     }
 
-    public function edit($id, Request $request)
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update($id, Request $request)
     {
         $request->validate([
             'name' => 'required|max:255',
@@ -76,6 +102,33 @@ class TeamController extends Controller
         $team->matchs_null = $request->matchs_null;
         $team->save();
         $teams = Team::all();
-        return view('admin/team', compact('teams'));
+        return view('admin/team/index', compact('teams'));
     }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
+    {
+        $team = Team::find($id);
+        $team->delete();
+        $teams = Team::all();
+        return view('admin/team/index', compact('teams'));
+    }
+
+    /**
+     * Display stats of a team.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function stats($id)
+    {
+        $players = Player::with('team')->find(4);
+        dd($players->team->name);
+    }
+
 }

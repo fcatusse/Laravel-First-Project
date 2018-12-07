@@ -8,4 +8,9 @@ class Team extends Model
 {
     // Autoriser les champs
     protected $fillable = ['name','country','matchs_won','matchs_lose','matchs_null'];
+
+    public function player()
+    {
+    	return $this->hasMany(Player::class);
+    }
 }
