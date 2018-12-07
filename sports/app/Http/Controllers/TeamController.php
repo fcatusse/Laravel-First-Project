@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Match;
 use App\Team;
 use App\Player;
 use App\Data;
@@ -125,10 +126,21 @@ class TeamController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function stats($id)
+    public function stats()
     {
-        $players = Player::with('team')->find(4);
-        dd($players->team->name);
+        $teams_array = [];
+        $i = 0;
+        $teams_list = Team::select('id','name')->orderBy('matchs_won')->get();
+        foreach ($teams_list as $v) {
+            $teams_stats[$i]['team_name'] = $v->name;
+            $teams_stats[$i]['player_nb'] = Player::where('team_id',$v->id)->count();
+            $teams_stats[$i]['match_nb'] = Match::where('team1',$v->id)->orWhere('team2',$v->id)->count();
+            $teams_stats[$i]['match_goals'] = Match::where('team1',$v->id)->sum('team1_goals');
+            $teams_stats[$i]['match_goals'] += Match::where('team2',$v->id)->sum('team2_goals');
+            $teams_stats[$i]['match_faults'] = Match::where('team1',$v->id)->sum('team1_faults');
+            $teams_stats[$i]['match_faults'] += Match::where('team2',$v->id)->sum('team2_faults');
+            $i++;
+        }
+        dd($teams_stats);
     }
-
 }
