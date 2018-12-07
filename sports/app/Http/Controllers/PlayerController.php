@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Player;
+use App\Team;
+use Illuminate\Support\Facades\DB;
 
 class PlayerController extends Controller
 {
@@ -13,8 +16,12 @@ class PlayerController extends Controller
      */
     public function index()
     {
-        $players = Player::all();
-        return view('player.index', compact('players')); 
+        $players = DB::table('players')
+            ->join('teams', 'players.team_id', '=', 'teams.id')
+            ->select('players.*', 'teams.name as team_name')
+            ->get();
+
+        return view('player.index', compact('players'), compact('teamname')); 
     }
 
     /**
@@ -24,7 +31,7 @@ class PlayerController extends Controller
      */
     public function create()
     {
-        //
+        return view('player.create', ['teams' => Team::all()]);
     }
 
     /**
@@ -35,7 +42,9 @@ class PlayerController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Player::create(request()->all());
+        
+        return redirect('/player');
     }
 
     /**
@@ -80,6 +89,8 @@ class PlayerController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $player = Player::find($id);
+        $player->delete();
+        return redirect('/player');
     }
 }
