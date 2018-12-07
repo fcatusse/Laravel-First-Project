@@ -4,5 +4,6 @@
     "Country" : "Pays",
     "Matches won" : "Matchs gagnes",
     "Matches lose" : "Matchs perdus",
-    "Matches null" : "Matchs nuls"
+    "Matches null" : "Matchs nuls",
+    "Enter team name" : "Saisir le nom de l'equipe"
 }

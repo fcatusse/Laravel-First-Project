@@ -16,10 +16,10 @@
             <td>{{ $team->name }}</td>
             <td>{{ $team->country }}</td>
             <td><img src="/img/flags/{{ $team->country }}.png"></td>
-            <td><a href="/admin/teams/edit/{{ $team->id }}">Edit</a> / <a href="/admin/teams/delete/{{ $team->id }}">Supprimer</a></td>
+            <td><a href="/admin/team/edit/{{ $team->id }}">Edit</a> / <a href="/admin/team/destroy/{{ $team->id }}">Supprimer</a></td>
         </tr>
         @endforeach
     </table>
-    <a href="/admin/teams/add">Ajouter</a>
+    <a href="/admin/team/create">Ajouter</a>
 
 @endsection
