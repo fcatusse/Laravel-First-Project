@@ -20,6 +20,7 @@ class CreateTeamsTable extends Migration
             $table->integer('matchs_won');
             $table->integer('matchs_lose');
             $table->integer('matchs_null');
+            $table->integer('odds');
             $table->timestamps();
         });
     }
