@@ -55,7 +55,9 @@ class PlayerController extends Controller
      */
     public function show($id)
     {
-        //
+        $player = Player::with('team')->find($id);
+        //dd($player->name);
+        return view('player.show', compact('player'));
     }
 
     /**
@@ -66,7 +68,10 @@ class PlayerController extends Controller
      */
     public function edit($id)
     {
-        //
+        $player = Player::find($id);
+        $teams = Team::all();
+
+        return view('player/edit', compact('player'), compact('teams'));
     }
 
     /**
@@ -78,7 +83,8 @@ class PlayerController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        Player::whereId($id)->update($request->except(['_token']));
+        return redirect('/player');
     }
 
     /**
@@ -89,8 +95,8 @@ class PlayerController extends Controller
      */
     public function destroy($id)
     {
-        $player = Player::find($id);
-        $player->delete();
-        return redirect('/player');
+        Player::whereId($id)->delete();
+        
+        return redirect('player/');
     }
 }

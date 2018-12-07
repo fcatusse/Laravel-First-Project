@@ -10,6 +10,7 @@
             <th scope="col">Team </th>
             <th scope="col">Goals</th>
             <th scope="col">Faults</th>
+            <th scope="col">Actions</th>
 
 @foreach($players as $player)
         <tr>
@@ -18,7 +19,7 @@
             <td>{{ $player->team_name }}</td>
             <td>{{ $player->goals }}</td>
             <td>{{ $player->faults }}</td>
-            <td><a href="/player/edit {{ $player->id }}">Edit</a> / <a href="player/delete{{ $player->id }}">Delete</a></td>
+            <td><a href="/player/edit/{{ $player->id }}">Edit</a> / <a href="player/destroy/{{ $player->id }}">Delete</a> / <a href="player/show/{{ $player->id }}">Show</a></td>
         </tr> 
 @endforeach
     </table>

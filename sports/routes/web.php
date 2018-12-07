@@ -48,11 +48,15 @@ Route::get('/player', 'PlayerController@index')->name('player');
 
 Route::get('/player/create', 'PlayerController@create');
 
-Route::get('/player/{player}', 'PlayerController@show');
-
 Route::post('/player', 'PlayerController@store');
 
-Route::delete('player/destroy/{player}', 'PlayerController@destroy');
+Route::get('/player/show/{player}', 'PlayerController@show');
+
+Route::get('player/edit/{player}', 'PlayerController@edit');
+
+Route::post('/update/{request}', 'PlayerController@update');
+
+Route::get('player/destroy/{player}', 'PlayerController@destroy');
 
 Route::get('/home', 'HomeController@index')->name('home');
 //->middleware('auth');
