@@ -52,7 +52,7 @@ Route::get('/player/{player}', 'PlayerController@show');
 
 Route::post('/player', 'PlayerController@store');
 
-Route::get('player/delete/{player}', 'PlayerController@destroy');
+Route::get('player/destroy/{player}', 'PlayerController@destroy');
 
 Route::get('/home', 'HomeController@index')->name('home');
 //->middleware('auth');

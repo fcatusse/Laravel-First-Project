@@ -92,6 +92,6 @@ class PlayerController extends Controller
         $player = Player::find($id);
         $player->delete();
         $teams = Team::all();
-        return view('admin/team', compact('teams'));
+        return redirect('player/');
     }
 }
