@@ -55,7 +55,9 @@ class PlayerController extends Controller
      */
     public function show($id)
     {
-        //
+        $player = Player::with('team')->find($id);
+        //dd($player->name);
+        return view('player.show', compact('player'));
     }
 
     /**
@@ -91,7 +93,6 @@ class PlayerController extends Controller
     {
         $player = Player::find($id);
         $player->delete();
-        $teams = Team::all();
         return redirect('player/');
     }
 }
