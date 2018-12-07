@@ -10,6 +10,7 @@
             <th scope="col">Team </th>
             <th scope="col">Goals</th>
             <th scope="col">Faults</th>
+            <th scope="col">Actions</th>
 
 @foreach($players as $player)
         <tr>

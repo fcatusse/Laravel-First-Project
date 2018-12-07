@@ -83,7 +83,6 @@ class PlayerController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //Player::update(request()->find($id));
         Player::whereId($id)->update($request->except(['_token']));
         return redirect('/player');
     }
@@ -96,8 +95,8 @@ class PlayerController extends Controller
      */
     public function destroy($id)
     {
-        $player = Player::find($id);
-        $player->delete();
+        Player::whereId($id)->delete();
+        
         return redirect('player/');
     }
 }

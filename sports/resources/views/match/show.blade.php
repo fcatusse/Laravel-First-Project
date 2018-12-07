@@ -2,7 +2,24 @@
 
 @section('content')
 <div class="card-header center"> 
-<!--- Ce code dégueulasse et incompréhensible a été écrit par Damian (mais ça marche) --->
+<!--- Ce code dégueulasse et incompréhensible a été écrit par Damian (mais ça marche)
+▒▒▒░░░░░░░░░░▄▐░░░░
+▒░░░░░░▄▄▄░░▄██▄░░░
+░░░░░░▐▀█▀▌░░░░▀█▄░
+░░░░░░▐█▄█▌░░░░░░▀█▄
+░░░░░░░▀▄▀░░░▄▄▄▄▄▀▀
+░░░░░▄▄▄██▀▀▀▀░░░░░
+░░░░█▀▄▄▄█░▀▀░░░░░░
+░░░░▌░▄▄▄▐▌▀▀▀░░░░░
+░▄░▐░░░▄▄░█░▀▀░░░░░
+░▀█▌░░░▄░▀█▀░▀░░░░░
+░░░░░░░░▄▄▐▌▄▄░░░░░
+░░░░░░░░▀███▀█░▄░░░
+░░░░░░░▐▌▀▄▀▄▀▐▄░░░
+░░░░░░░▐▀░░░░░░▐▌░░
+░░░░░░░█░░░░░░░░█░░
+░░░░░░▐▌░░░░░░░░░█░ 
+ --->
 @php $i = 0 @endphp
 @foreach($teams as $team)
 @if($i == 0)
