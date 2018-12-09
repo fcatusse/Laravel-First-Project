@@ -30,15 +30,19 @@
         </div>
         <div class="form-group">
             <label>{{ __('Matches won') }}</label><br>
-            <input class="form-control" type="number" name="matchs_won" placeholder="Enter mumber matches lon">
+            <input class="form-control" type="number" name="matchs_won" placeholder="Enter number matches lon">
         </div>
         <div class="form-group">
             <label>{{ __('Matches lose') }}</label><br>
-            <input class="form-control" type="number" name="matchs_lose" placeholder="Enter mumber matches lose">
+            <input class="form-control" type="number" name="matchs_lose" placeholder="Enter number matches lose">
         </div>
         <div class="form-group">
             <label>{{ __('Matches null') }}</label><br>
-            <input class="form-control" type="number" name="matchs_null" placeholder="Enter mumber matches null">
+            <input class="form-control" type="number" name="matchs_null" placeholder="Enter number matches null">
+        </div>
+        <div class="form-group">
+            <label>{{ __('Odds') }}</label><br>
+            <input class="form-control" type="number" name="odds" placeholder="Enter odds">
         </div>
          <button type="submit" class="btn btn-primary">Submit</button>
     </form>

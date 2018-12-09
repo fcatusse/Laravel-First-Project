@@ -24,7 +24,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/team', 'TeamController@index')->name('teams');
 Route::get('/team/stats', 'TeamController@stats');
 
-Route::group(['prefix' => 'admin'], function () {
+Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin']], function () {
 	Route::get('team', 'TeamController@index');
 	Route::get('team/create/', 'TeamController@create');
 	Route::post('team/create/', 'TeamController@store');
@@ -59,4 +59,6 @@ Route::post('/update/{request}', 'PlayerController@update');
 Route::get('player/destroy/{player}', 'PlayerController@destroy');
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('home/wallet', 'HomeController@wallet')->name('wallet');
 //->middleware('auth');

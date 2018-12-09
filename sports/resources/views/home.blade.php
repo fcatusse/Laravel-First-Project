@@ -18,10 +18,17 @@
                     @if(Auth::check() && Auth::user()->is_admin == 1)
                         <div class="card-body">
                             <a href='match/create'>Create Match</a>
-                            <a href='team/create'>Create Team</a>
+                            <a href='admin/team/create'>Create Team</a>
                             <a href='player/create'>Create Player</a>
                         </div>
-
+                    @if(Auth::check())
+                    <div class="card-body">
+                            <a href='match/'>Match list</a>
+                            <a href='team/'>Team list</a>
+                            <a href='player/'>Player list</a>
+                            <a href='wallet/'> Wallet </a>
+                        </div>
+                    @endif
                     @endif
                     </div>
             </div>
