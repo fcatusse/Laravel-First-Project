@@ -22,7 +22,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 // Team route
 
 Route::get('/team', 'TeamController@index')->name('teams');
-Route::get('/team/stats/{id}', 'TeamController@stats');
+Route::get('/team/stats', 'TeamController@stats');
 
 Route::group(['prefix' => 'admin'], function () {
 	Route::get('team', 'TeamController@index');
